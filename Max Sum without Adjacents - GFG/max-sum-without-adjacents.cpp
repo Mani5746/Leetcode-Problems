@@ -20,12 +20,41 @@ public:
 	    
 	    return dp[ind]=max(pick,nonpick);
 	}
+	
+	
 	int findMaxSum(int *arr, int n) 
 	{
 	    // code here
 	    
 	    vector<long int>dp(n+1,-1);
-	    return f(n-1,arr,dp);
+	  //  return f(n-1,arr,dp);
+	  
+	  if(n==1) return arr[0];
+	    
+	   long int prev2=arr[0];
+	    long int prev1=max(arr[0],arr[1]);
+	    long int curr=0;
+	    //int prev1
+	    
+	    for(int ind=2;ind<n;ind++)
+	   {
+	       
+	    long int pick=0,nonpick=0;
+	     pick=arr[ind]+prev2;
+	    
+	    
+	     nonpick=0+prev1;
+	    
+	    
+	     curr=max(pick,nonpick);
+	     
+	     prev2=prev1;
+	     
+	     prev1=curr;
+	     
+	    }
+	    
+	    return prev1;
 	}
 };
 
