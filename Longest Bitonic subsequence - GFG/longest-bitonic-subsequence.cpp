@@ -16,7 +16,7 @@ class Solution{
 	    
 	    for(int i=0;i<n;i++)
 	    {
-	        for(int p=0;p<i;p++)
+	        for(int p=0;p<=i;p++)
 	        {
 	            if(nums[p]<nums[i]&&1+dp1[p]>dp1[i])
 	            {
