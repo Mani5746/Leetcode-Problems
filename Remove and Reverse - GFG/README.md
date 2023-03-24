@@ -13,7 +13,7 @@ You have to find the final string.</span></p>
 character is a. After Removing the first 
 character, S = "bab". After Reversing the 
 string, S = "bab".
-<strong>In 2nd operation:</strong> The first non repeating 
+<strong>In 2nd operation:</strong> The first repeating 
 character is b. After Removing the first 
 character, S = "ab". After Reversing the 
 string, S = "ba".
