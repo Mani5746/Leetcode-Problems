@@ -10,64 +10,42 @@ class Solution {
     string removeReverse(string S) 
     {
         // code here
-        int n=S.size();
-        map<char,int> mp;
-        for(auto ch:S) mp[ch]++;
-        
-        int start=0,end=n-1;
-        //vector<int> ans(S.size()+1,0);
-        
-        int dir=0;
-        while(start<end)
-        {
-            
-            if(dir==0)
-            {
-                if(mp[S[start]]==1)
-                {
-                    start++;
-                }
+       map<char,int>mp;
+        for(int i=0;i<S.size();i++){
+            mp[S[i]]++;
+        }
+        int i=0,j=S.size()-1;
+        int flag=1;
+        while(i<j){
+            if(flag){
+                if(mp[S[i]]==1){i++; }
+                else{
+                   
+                    mp[S[i]]--;
+                     S[i]='*';
+                    flag=0;
+                    i++;
+                } 
                 
-                else
-                {
-                    mp[S[start]]--;
-                    S[start]='#' ;
-                    start++;
-                    dir=1;
-                }
             }
-            
-            else
-            {
-                if(mp[S[end]]==1)
-                {
-                    end--;
-                }
+            else{
                 
-                else
-                {
-                    mp[S[end]]--;
-                    S[end]='#';
-                    end--;
-                    dir=0;
-                }
+                if(mp[S[j]]==1) {j--; }
+                else{
+                    
+                    mp[S[j]]--;
+                    S[j]='*';
+                    flag=1;
+                    j--;
+                } 
+                
             }
         }
-        
         
         string ans;
+        for(auto it: S) if(it!='*') ans.push_back(it);
         
-        
-        for(auto it:S)
-        {
-            if(it!='#') ans.push_back(it);
-        }
-        
-        if(dir) reverse(ans.begin(),ans.end());
-        
-        
-        
-        
+        if(flag==0) reverse(ans.begin(),ans.end());
         
         return ans;
         
